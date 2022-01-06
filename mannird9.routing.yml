@@ -1,0 +1,31 @@
+mannird9.controller1:
+  path: '/controller1'
+  defaults:
+    _controller:  '\Drupal\mannird9\Controller\DefaultController::controller1'
+    _title: 'controller1'
+  requirements:
+    _permission: 'access content'
+
+mannird9.form1:
+  path: '/form1'
+  defaults:
+    _form:  '\Drupal\mannird9\Form\Form1Form'
+    _title: 'Form1'
+  requirements:
+    _permission: 'access content'
+
+mannird9.registrations:
+  path: '/registrations'
+  defaults:
+    _form:  '\Drupal\mannird9\Form\RegistrationListForm'
+    _title: 'RegistrationListForm'
+  requirements:
+    _permission: 'access content'
+
+mannird9.google:
+  path: '/google'
+  defaults:
+    _controller:  '\Drupal\mannird9\Controller\DefaultController::google'
+    _title: 'google'
+  requirements:
+    _permission: 'access content'
