@@ -6,11 +6,11 @@ mannird9.controller1:
   requirements:
     _permission: 'access content'
 
-mannird9.form1:
-  path: '/form1'
+mannird9.registration:
+  path: '/registration'
   defaults:
-    _form:  '\Drupal\mannird9\Form\Form1Form'
-    _title: 'Form1'
+    _form:  '\Drupal\mannird9\Form\RegistrationForm'
+    _title: 'Registration Form'
   requirements:
     _permission: 'access content'
 
@@ -27,5 +27,25 @@ mannird9.google:
   defaults:
     _controller:  '\Drupal\mannird9\Controller\DefaultController::google'
     _title: 'google'
+  requirements:
+    _permission: 'access content'
+
+mannird9.registration_view:
+  path: '/registration/{id}'
+  options:
+    id: \d+
+  defaults:
+    _controller:  '\Drupal\mannird9\Controller\DefaultController::registration_view'
+    _title: 'View Registration'
+  requirements:
+    _permission: 'access content'
+
+mannird9.registration_edit:
+  path: '/registration/{id}/edit'
+  options:
+    id: \d+
+  defaults:
+    _form:  '\Drupal\mannird9\Form\RegistrationForm'
+    _title: 'Edit Registration'
   requirements:
     _permission: 'access content'

@@ -57,7 +57,41 @@ class DefaultController extends ControllerBase {
 
       return [
         '#type' => 'inline_template',
-        '#template' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/RyLwophXGFI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',];
+        '#template' => '<iframe width="600" height="700" src="https://www.youtube.com/embed/RyLwophXGFI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',];
+  }
+
+  public function registration_view($id = null) {
+
+    $request = \Drupal::request();
+    if ($route = $request->attributes->get(\Symfony\Cmf\Component\Routing\RouteObjectInterface::ROUTE_OBJECT)) {
+      $route->setDefault('_title', '<none>');
+    }
+
+    $reg = \Drupal::database()->query("select * from _registrations where id=$id")->fetchObject();
+    // print('<pre>' . print_r($reg, TRUE) . '</pre>'); exit();
+
+    /*
+    return [
+      '#markup' => "<table border='1'>
+      <tr>
+        <th>Name</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>$reg->name</td>
+      </tr>
+      <tr>
+        <td>Phone Number</td>
+        <td>$reg->phone</td>
+      </tr>
+    </table>"
+    ];
+    */
+    return [
+      '#theme' => 'registration',
+      '#reg' => $reg,
+    ];
   }
 
 }

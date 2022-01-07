@@ -18,23 +18,23 @@
 #     parent: mannird9.admin
 #   weight: 2
 
-mannird9.controller1:
-  title: 'Controller 1'
-  route_name: mannird9.controller1
+# mannird9.controller1:
+#   title: 'Controller 1'
+#   route_name: mannird9.controller1
+#   menu_name: main
+#   weight: 1
+
+mannird9.registration:
+  title: 'New Registration'
+  route_name: mannird9.registration
   menu_name: main
   weight: 1
-
-mannird9.form1:
-  title: 'Form1 1'
-  route_name: mannird9.form1
-  menu_name: main
-  weight: 2
 
 
 mannird9.registrations:
   title: 'Registration List'
   route_name: mannird9.registrations
   menu_name: main
-  weight: 3
+  weight: 2
 
 

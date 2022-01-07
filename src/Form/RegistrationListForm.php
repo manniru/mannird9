@@ -4,97 +4,65 @@ namespace Drupal\mannird9\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 class RegistrationListForm extends FormBase {
 
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-    $form['table1'] = [
-      '#type' => 'table',
-      '#header' => [$this->t('SN'), $this->t('Name'), $this->t('Gender')],
-      '#rows' => [
-        ['1', '2', '3'],
-        ['4', '5', '6'],
-        ['7', '8', '9'],
-      ],
+    $header = [
+      'id' => $this->t('S/N'),
+      'name' => $this->t('Name'),
+      'phone' => $this->t('Phone'),
+      'gender' => $this->t('Gender'),
+      'age' => $this->t('Age'),
+      'view' => $this->t('View'),
+      'edit' => $this->t('Edit'),
     ];
 
+    $query = \Drupal::database()->select('_registrations', 'tb');
+    $query->fields('tb');
 
-$header = [
-  'color' => $this
-    ->t('Color'),
-  'shape' => $this
-    ->t('Shape'),
-];
-$options = [
-  1 => [
-    'color' => 'Red',
-    'shape' => 'Triangle',
-  ],
-  2 => [
-    'color' => 'Green',
-    'shape' => 'Square',
-  ],
-  3 => [
-    'color' => 'Blue',
-    'shape' => 'Hexagon',
-  ],
-];
-$form['table2'] = array(
-  '#type' => 'tableselect',
-  '#header' => $header,
-  '#options' => $options,
-  '#empty' => $this
-    ->t('No shapes found'),
-);
+    // if (isset($_SESSION['search_word']) && $_SESSION['search_by'] != '-Search By-') {
+    //   $query->condition($_SESSION['search_by'], '%'.$_SESSION['search_word'].'%', 'LIKE');
+    // }
 
+    $query = $query->extend('Drupal\Core\Database\Query\PagerSelectExtender')->limit(10);
+    $query->orderBy('id', 'DESC');
+    $results = $query->execute();
 
-$form['contacts'] = array(
-  '#type' => 'table',
-  '#caption' => $this
-    ->t('Sample Table'),
-  '#header' => array(
-    $this
-      ->t('Name'),
-    $this
-      ->t('Phone'),
-  ),
-);
-for ($i = 1; $i <= 4; $i++) {
-  $form['contacts'][$i]['#attributes'] = array(
-    'class' => array(
-      'foo',
-      'baz',
-    ),
-  );
-  $form['contacts'][$i]['name'] = array(
-    '#type' => 'textfield',
-    '#title' => $this
-      ->t('Name'),
-    '#title_display' => 'invisible',
-  );
-  $form['contacts'][$i]['phone'] = array(
-    '#type' => 'tel',
-    '#title' => $this
-      ->t('Phone'),
-    '#title_display' => 'invisible',
-  );
-}
-$form['contacts'][]['colspan_example'] = array(
-  '#plain_text' => 'Colspan Example',
-  '#wrapper_attributes' => array(
-    'colspan' => 2,
-    'class' => array(
-      'foo',
-      'bar',
-    ),
-  ),
-);
+    $rows = [];
+    foreach ($results as $row) {
+
+      $view_link = Link::fromTextAndUrl('View', new Url('mannird9.registration_view', ['id' => $row->id], ['attributes' => ['class' => ['btn btn-block btn-success btn-sm']]]));
+      $edit_link = Link::fromTextAndUrl('Edit', new Url('mannird9.registration_edit', ['id' => $row->id], ['attributes' => ['class' => ['btn btn-block btn-primary btn-sm']]]));
+
+      $rows[] = [
+        'id' => $row->id,
+        'name' => $row->name,
+        'phone' => $row->phone,
+        'gender' => $row->gender,
+        'age' => $row->age,
+        'view' => $view_link,
+        'edit' => $edit_link,
+
+      ];
+    }
+
+    $form['table'] = [
+      '#type' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+      '#empty' => t('No records found'),
+      '#attributes'=> ['class' => ['table table-sm table-bordered'], 'style' =>[ "font-size:14px;"]],
+    ];
+    $form['pager'] = ['#type' => 'pager'];
+
     return $form;
   }
 
   public function getFormId() {
-    return 'form1_form';
+    return 'registration_list_form';
   }
 
   public function validateForm(array &$form, FormStateInterface $form_state) {

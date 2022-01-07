@@ -1,0 +1,9 @@
+<div style="text-align: center;"><input class="button button-action button--primary button--small" type="button" value="Print this page" /></div>
+<div style="text-align: center;"><img style="align-items: center;" src="{{ file_url('modules/custom/mannir/mannird9/assets/images/logo.png') }}" alt="" width="100" height="100" /><br /><strong><strong> BAYERO UNIVERSITY KANO<br />ONLINE RGEISTRATION<br /><br /></strong></strong>
+<div>
+<h5>{% if payment.serviceTypeId == '8723200175' %} PAYMENT INVOICE FOR REGISTRATION OF TRICYCLE (NEW) {% elseif payment.serviceTypeId == '8723215134' %} PAYMENT INVOICE FOR TRICYCLE OPERATION PERMIT (RENEWAL) {% else %} PAYMENT INVOICE FOR REGISTRATION OF TRICYCLE AND PAYMENT OF TRICYCLE OPERATION PERMIT {% endif %}</h5>
+</div>
+<strong><strong><br /></strong></strong>
+<div style="font-size: 27px;">Registration Id: {{reg.id}}<br />Name: {{reg.name}}<br />Phone: {{reg.phone}}<br />Gender: {{reg.gender}}<br />Age: {{reg.age}}</div>
+<div style="width: 800px; text-align: left;">&nbsp;</div>
+</div>
