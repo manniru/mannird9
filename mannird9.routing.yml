@@ -40,6 +40,16 @@ mannird9.registration_view:
   requirements:
     _permission: 'access content'
 
+mannird9.registration_pdf:
+  path: '/registration/{id}/pdf'
+  options:
+    id: \d+
+  defaults:
+    _controller:  '\Drupal\mannird9\Controller\DefaultController::registration_pdf'
+    _title: 'View Registration PDF'
+  requirements:
+    _permission: 'access content'
+
 mannird9.registration_edit:
   path: '/registration/{id}/edit'
   options:

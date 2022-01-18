@@ -17,6 +17,7 @@ class RegistrationListForm extends FormBase {
       'gender' => $this->t('Gender'),
       'age' => $this->t('Age'),
       'view' => $this->t('View'),
+      'pdf' => $this->t('PDF'),
       'edit' => $this->t('Edit'),
     ];
 
@@ -35,6 +36,7 @@ class RegistrationListForm extends FormBase {
     foreach ($results as $row) {
 
       $view_link = Link::fromTextAndUrl('View', new Url('mannird9.registration_view', ['id' => $row->id], ['attributes' => ['class' => ['btn btn-block btn-success btn-sm']]]));
+      $pdf_link = Link::fromTextAndUrl('PDF', new Url('mannird9.registration_pdf', ['id' => $row->id], ['attributes' => ['class' => ['btn btn-block btn-success btn-sm']]]));
       $edit_link = Link::fromTextAndUrl('Edit', new Url('mannird9.registration_edit', ['id' => $row->id], ['attributes' => ['class' => ['btn btn-block btn-primary btn-sm']]]));
 
       $rows[] = [
@@ -44,6 +46,7 @@ class RegistrationListForm extends FormBase {
         'gender' => $row->gender,
         'age' => $row->age,
         'view' => $view_link,
+        'pdf' => $pdf_link,
         'edit' => $edit_link,
 
       ];

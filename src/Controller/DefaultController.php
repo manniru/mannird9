@@ -94,4 +94,21 @@ class DefaultController extends ControllerBase {
     ];
   }
 
+  public function registration_pdf($id = null)
+  {
+    $reg = \Drupal::database()->query("select * from _registrations where id=$id")->fetchObject();
+    $pdf = new \FPDF('P','mm','A4');
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',16);
+    $pdf->Cell(0,10,'BRILLIANT ESYSTEMS LIMITED', 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Name: $reg->name", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Output();
+    exit();
+
+    return ['#markup' => 'PDF'];
+  }
+
 }
