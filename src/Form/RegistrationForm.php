@@ -17,6 +17,15 @@ class RegistrationForm extends FormBase {
 
     }
 
+    $account =substr(round(microtime(true) * 1000), 1, 10);
+
+    $form['accno'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Account Number'),
+      '#required' => TRUE,
+      '#default_value' => isset($reg->accno) ? $reg->accno : $account,
+    ];
+
     $form['name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Name'),

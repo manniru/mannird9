@@ -24,11 +24,21 @@ class RegistrationListForm extends FormBase {
     $query = \Drupal::database()->select('_registrations', 'tb');
     $query->fields('tb');
 
-    // if (isset($_SESSION['search_word']) && $_SESSION['search_by'] != '-Search By-') {
-    //   $query->condition($_SESSION['search_by'], '%'.$_SESSION['search_word'].'%', 'LIKE');
-    // }
+    if (isset($_SESSION['keyword'])) {
 
-    $query = $query->extend('Drupal\Core\Database\Query\PagerSelectExtender')->limit(10);
+      $orGroup = $query->orConditionGroup()
+      ->condition('name', '%'.$_SESSION['keyword'].'%', 'LIKE')
+      ->condition('phone', '%'.$_SESSION['keyword'].'%', 'LIKE')
+      ->condition('age', '%'.$_SESSION['keyword'].'%', 'LIKE')
+      ;
+
+      // Add the group to the query.
+      $query->condition($orGroup);
+
+    }
+
+    $query = $query->extend('Drupal\Core\Database\Query\PagerSelectExtender')->limit(20);
+
     $query->orderBy('id', 'DESC');
     $results = $query->execute();
 
@@ -51,6 +61,8 @@ class RegistrationListForm extends FormBase {
 
       ];
     }
+
+    $form['filter'] = \Drupal::formBuilder()->getForm('Drupal\mannird9\Form\SearchForm');
 
     $form['table'] = [
       '#type' => 'table',

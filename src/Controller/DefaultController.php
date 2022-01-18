@@ -100,11 +100,34 @@ class DefaultController extends ControllerBase {
     $pdf = new \FPDF('P','mm','A4');
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',16);
-    $pdf->Cell(0,10,'BRILLIANT ESYSTEMS LIMITED', 0, 0, 'C');
+    $pdf->setXY(50, 100);
+    $pdf->Cell(0,10,'BRILLIANT ESYSTEMS LIMITED', 0, 0);
     $pdf->Ln();
     $pdf->Cell(0,10,"Name: $reg->name", 0, 0, 'C');
     $pdf->Ln();
     $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+    $pdf->Ln();
+
     $pdf->Output();
     exit();
 
