@@ -37,4 +37,8 @@ mannird9.registrations:
   menu_name: main
   weight: 2
 
-
+mannird9.dashboard:
+  title: 'Dashboard'
+  route_name: mannird9.dashboard
+  menu_name: main
+  weight: 0

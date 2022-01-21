@@ -59,3 +59,11 @@ mannird9.registration_edit:
     _title: 'Edit Registration'
   requirements:
     _permission: 'access content'
+
+mannird9.dashboard:
+  path: '/dashboard'
+  defaults:
+    _controller:  '\Drupal\mannird9\Controller\DefaultController::dashboard'
+    _title: 'dashboard'
+  requirements:
+    _permission: 'access content'

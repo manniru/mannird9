@@ -1,0 +1,31 @@
+adminlte3:
+  js:
+    //adminlte.io/themes/v3/plugins/jquery/jquery.min.js: {}
+    //adminlte.io/themes/v3/plugins/jquery-ui/jquery-ui.min.js: {}
+    //adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js: {}
+    //adminlte.io/themes/v3/plugins/chart.js/Chart.min.js: {}
+    //adminlte.io/themes/v3/plugins/sparklines/sparkline.js: {}
+    //adminlte.io/themes/v3/plugins/jqvmap/jquery.vmap.min.js: {}
+    //adminlte.io/themes/v3/plugins/jqvmap/maps/jquery.vmap.usa.js: {}
+    //adminlte.io/themes/v3/plugins/jquery-knob/jquery.knob.min.js: {}
+    //adminlte.io/themes/v3/plugins/moment/moment.min.js: {}
+    //adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.js: {}
+    //adminlte.io/themes/v3/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js: {}
+    //adminlte.io/themes/v3/plugins/summernote/summernote-bs4.min.js: {}
+    //adminlte.io/themes/v3/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js: {}
+    //adminlte.io/themes/v3/dist/js/adminlte.js: {}
+    //adminlte.io/themes/v3/dist/js/demo.js: {}
+    //adminlte.io/themes/v3/dist/js/pages/dashboard.js: {}
+
+  css:
+    theme:
+      //fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback: {}
+      //adminlte.io/themes/v3/plugins/fontawesome-free/css/all.min.css: {}
+      //code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css: {}
+      //adminlte.io/themes/v3/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css: {}
+      //adminlte.io/themes/v3/plugins/icheck-bootstrap/icheck-bootstrap.min.css: {}
+      //adminlte.io/themes/v3/plugins/jqvmap/jqvmap.min.css: {}
+      //adminlte.io/themes/v3/dist/css/adminlte.min.css: {}
+      //adminlte.io/themes/v3/plugins/overlayScrollbars/css/OverlayScrollbars.min.css: {}
+      //adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.css: {}
+      //adminlte.io/themes/v3/plugins/summernote/summernote-bs4.min.css: {}
