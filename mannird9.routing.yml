@@ -67,3 +67,19 @@ mannird9.dashboard:
     _title: 'dashboard'
   requirements:
     _permission: 'access content'
+
+mannird9.nfc:
+  path: '/nfc'
+  defaults:
+    _controller:  '\Drupal\mannird9\Controller\DefaultController::nfc'
+    _title: 'nfc'
+  requirements:
+    _permission: 'access content'
+
+mannird9.idcard:
+  path: '/idcard'
+  defaults:
+    _controller:  '\Drupal\mannird9\Controller\DefaultController::idcard'
+    _title: 'idcard'
+  requirements:
+    _permission: 'access content'

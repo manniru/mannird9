@@ -99,33 +99,44 @@ class DefaultController extends ControllerBase {
     $reg = \Drupal::database()->query("select * from _registrations where id=$id")->fetchObject();
     $pdf = new \FPDF('P','mm','A4');
     $pdf->AddPage();
+    $pdf->SetFont('Arial','B',14);
+    // $pdf->setXY(50, 100);
+
+
+    $pdf->Cell(0,10,'JANUARY 28. 2022', 0, 0, 'R');
+    $pdf->Ln();
+    $pdf->Cell(0,10,'DEAR HABIBU', 0, 0);
+    $pdf->Ln();
+
+    $pdf->SetFont('Arial','BU',16);
+
+    $pdf->Cell(0,10,'ADMISSION LETTER', 0, 0, 'C');
+
     $pdf->SetFont('Arial','B',16);
-    $pdf->setXY(50, 100);
-    $pdf->Cell(0,10,'BRILLIANT ESYSTEMS LIMITED', 0, 0);
+
     $pdf->Ln();
     $pdf->Cell(0,10,"Name: $reg->name", 0, 0, 'C');
     $pdf->Ln();
     $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
     $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
-    $pdf->Ln();
-    $pdf->Cell(0,10,"Gender: $reg->gender", 0, 0, 'C');
+
+    $pdf->SetFont('Arial','B',30);
+
+    // $pdf->Cell(20,10,"HABIBU", 1, 0, 'C');
+
+    /*
+    for ($i=1; $i < 101; $i++) {
+      $pdf->Cell(20,10,$i, 1, 0, 'C');
+      $pdf->Cell(20,10,$i+1, 1, 0, 'C');
+      $pdf->Cell(20,10,$i+2, 1, 0, 'C');
+      $pdf->Cell(20,10,$i+3, 1, 0, 'C');
+      $pdf->Cell(20,10,$i+4, 1, 0, 'C');
+      $pdf->Cell(20,10,$i+5, 1, 0, 'C');
+      $pdf->Ln();
+
+      }
+      */
+
     $pdf->Ln();
 
     $pdf->Output();
@@ -288,4 +299,40 @@ class DefaultController extends ControllerBase {
 ];
   }
 
+  public function nfc(Type $var = null)
+  {
+    return [
+      '#type' => 'markup',
+      '#markup' => '<div class="row"></div>',
+      // '#attached' => [ 'library' => ['mannird9/adminlte3', ]],
+    ];
+  }
+
+  public function idcard(Type $var = null)
+  {
+    $pdf = new \FPDF('L','mm','A5');
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',14);
+    // $pdf->setXY(50, 100);
+
+    $pdf->Image('modules/custom/mannir/mannird9/assets/images/bg.jpeg',0,0,210);
+    // $pdf->Image('modules/custom/mannir/mannird9/assets/images/uel.png',80,50,70);
+
+    $pdf->Cell(0,10,'JANUARY 28. 2022', 0, 0, 'R');
+    $pdf->Ln();
+    $pdf->Cell(0,10,'DEAR HABIBU', 0, 0);
+    $pdf->Ln();
+
+    $pdf->SetFont('Arial','BU',16);
+
+    $pdf->Cell(0,10,'ADMISSION LETTER', 0, 0, 'C');
+
+    $pdf->SetFont('Arial','B',16);
+
+    $pdf->Ln();
+
+    $pdf->Output();
+    exit();
+
+  }
 }
