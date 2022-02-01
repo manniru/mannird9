@@ -32,6 +32,16 @@ class SMSForm extends FormBase {
 
   public function buildForm(array $form, FormStateInterface $form_state) {
 
+    $query = "SELECT phone, email, pass, `name` FROM _agents LIMIT 2";
+    $result = $this->database->query($query)->fetchAll();
+    foreach($result as $agent) {
+      $message = "KAZAURE IGR PLATFORM: - Hi, $agent->name , Your Username is $agent->email and Password is $agent->pass";
+      $status = sendsms($agent->phone, $message);
+      $this->messenger()->addMessage($message);
+      $this->messenger()->addMessage($status);
+    }
+    // print('<pre>' . print_r($result, TRUE) . '</pre>'); exit();
+
     $form['phone'] = [
       '#type' => 'tel',
       '#title' => $this->t('Phone number'),
@@ -59,27 +69,7 @@ class SMSForm extends FormBase {
     $phone = $form_state->getValue('phone');
     $phone = '234' . substr($phone, 1);
 
-    // %20
-    $message = $form_state->getValue('message');
-    // $message = urlencode($message);
-    $message = str_replace(' ', '%20', $message);
-
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => 'http://www.smslive247.com/http/index.aspx?cmd=sendquickmsg&owneremail=sms@brilliant.ng&subacct=123&subacctpwd=123&message='.$message.'&sender=IGR&sendto='.$phone.'&msgtype=0%0A',
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => '',
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 0,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => 'GET',
-    ));
-
-    $response = curl_exec($curl);
-
-    curl_close($curl);
+    sendsms($phone, $form_state->getValue('message'));
 
 
     $this->messenger()->addMessage("Phone: $phone, Message: $message, Response: $response");
