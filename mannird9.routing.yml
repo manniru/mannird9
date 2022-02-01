@@ -83,3 +83,11 @@ mannird9.idcard:
     _title: 'idcard'
   requirements:
     _permission: 'access content'
+
+mannird9.sms:
+  path: '/sms'
+  defaults:
+    _form:  '\Drupal\mannird9\Form\SMSForm'
+    _title: 'SMS Form'
+  requirements:
+    _permission: 'access content'

@@ -42,3 +42,9 @@ mannird9.dashboard:
   route_name: mannird9.dashboard
   menu_name: main
   weight: 0
+
+mannird9.sms:
+  title: 'Send SMS'
+  route_name: mannird9.sms
+  menu_name: main
+  weight: 5
